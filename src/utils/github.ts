@@ -11,6 +11,6 @@ export async function getRepo(reponame: string | undefined) {
     owner,
     repo,
   });
-  console.log(data);
+
   return data;
 }
