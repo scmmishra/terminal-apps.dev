@@ -1,61 +1,77 @@
 ---
+import { Image } from "astro:assets";
+import { getRepo } from "../utils/github";
+
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  image: ImageMetadata;
+  sponsorLink: string;
+  repoName: string;
+  color: "pink" | "red" | "green" | "blue" | "yellow" | "purple";
 }
 
-const { href, title, body } = Astro.props;
+const { repoName, image, sponsorLink, color } = Astro.props;
+
+const repo = await getRepo(repoName);
+
+const themeConfig = {
+  pink: ["bg-pink-400", "text-pink-400"],
+  red: ["bg-red-500", "text-red-500"],
+  green: ["bg-green-500", "text-green-500"],
+  blue: ["bg-blue-500", "text-blue-500"],
+  yellow: ["bg-yellow-500", "text-yellow-500"],
+  purple: ["bg-purple-500", "text-purple-500"],
+};
+
+const starsCount = writeNumberNicely(repo.stargazers_count);
+const theme = themeConfig[color];
+
+function writeNumberNicely(num: number) {
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+    maximumFractionDigits: 1,
+  }).format(num);
+}
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
-</style>
+<section class="space-y-4 block">
+  <a
+    href={repo.html_url}
+    target="_blank"
+    class:list={[
+      "block max-w-3xl mx-auto p-2 rounded-lg overflow-hidden",
+      theme[0],
+    ]}
+  >
+    <Image
+      src={image}
+      height="1760"
+      width="3000"
+      alt="TerminalApps"
+      class="shadow"
+    />
+  </a>
+  <div>
+    <div class="flex gap-2 items-center justify-between">
+      <h2 class:list={["text-xl font-semibold text-pink-400", theme[1]]}>
+        {repo.name} [{starsCount} Stars]
+      </h2>
+      <div>
+        <a
+          class="px-2 py-0.5 bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
+          target="_blank"
+          href={repo.html_url}>GitHub</a
+        >
+        <a
+          class:list={[
+            "px-2 py-0.5 font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
+            theme[0],
+          ]}
+          target="_blank"
+          href={sponsorLink}>Sponsor</a
+        >
+      </div>
+    </div>
+    <p class="mt-2">{repo.description}</p>
+  </div>
+</section>
