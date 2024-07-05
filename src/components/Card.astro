@@ -6,7 +6,16 @@ interface Props {
   image: ImageMetadata;
   sponsorLink?: string;
   repoName: string;
-  color: "pink" | "red" | "green" | "blue" | "yellow" | "purple";
+  color:
+    | "pink"
+    | "red"
+    | "green"
+    | "blue"
+    | "yellow"
+    | "purple"
+    | "indigo"
+    | "fuchsia"
+    | "teal";
 }
 
 const { repoName, image, sponsorLink, color } = Astro.props;

@@ -12,7 +12,21 @@ import Oha from "../assets/screenshots/oha.png";
 import Superfile from "../assets/screenshots/superfile.png";
 import GhDash from "../assets/screenshots/gh-dash.png";
 
-const projects = [
+const projects: Array<{
+  image: ImageMetadata;
+  sponsorLink?: string;
+  repoName: string;
+  color:
+    | "pink"
+    | "red"
+    | "green"
+    | "blue"
+    | "yellow"
+    | "purple"
+    | "indigo"
+    | "fuchsia"
+    | "teal";
+}> = [
   {
     image: Lazygit,
     color: "pink",
