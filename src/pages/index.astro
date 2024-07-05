@@ -97,11 +97,31 @@ const projects: Array<{
     {projects.map((proj) => <Card {...proj} />)}
   </main>
 
-  <footer class="max-w-7xl mx-auto py-10 border-t border-gray-900">
-    Curated and maintained by <a
-      target="_blank"
-      href="https://shivam.dev"
-      class="underline">@scmmishra</a
-    >
-  </footer>
-</Layout>
+  <footer
+    class="max-w-7xl mx-auto py-10 border-t border-gray-900 flex md:flex-row flex-col md:justify-between md:items-center"
+  >
+    <span>
+      Curated and maintained by <a
+        target="_blank"
+        href="https://shivam.dev"
+        class="underline">@scmmishra</a
+      >
+    </span>
+    <span class="space-x-4">
+      <a
+        target="_blank"
+        class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
+        href="https://github.com/scmmishra/terminal-apps.dev"
+      >
+        GitHub
+      </a>
+      <a
+        target="_blank"
+        class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
+        href="https://github.com/scmmishra/terminal-apps.dev"
+      >
+        Submit an app
+      </a>
+    </span>
+  </footer></Layout
+>
