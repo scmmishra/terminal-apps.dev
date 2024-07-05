@@ -1,0 +1,15 @@
+name: Suggest an app
+description: Suggest a TUI we should add to the list
+labels: "suggestion"
+body:
+  - type: input
+    attributes:
+      label: Name of the TUI
+      description: The name of the terminal UI application
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: GitHub/GitLab URL
+    validations:
+      required: true
