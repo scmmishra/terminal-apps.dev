@@ -13,6 +13,10 @@ const { repoName, image, sponsorLink, color } = Astro.props;
 
 const repo = await getRepo(repoName);
 
+if (!repo) {
+  throw new Error(`Repo ${repoName} not found`);
+}
+
 const themeConfig = {
   pink: ["bg-pink-400", "text-pink-400"],
   red: ["bg-red-500", "text-red-500"],
@@ -48,9 +52,8 @@ function writeNumberNicely(num: number) {
   >
     <Image
       src={image}
-      height="1760"
-      width="3000"
-      alt="TerminalApps"
+      densities={[1.5, 2]}
+      alt={`Screenshot of terminal app called ${repo.name}`}
       class="shadow"
     />
   </a>
