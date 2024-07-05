@@ -79,6 +79,8 @@ function writeNumberNicely(num: number) {
         <a
           class="px-2 py-0.5 bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
           target="_blank"
+          data-umami-event="Visit Project"
+          data-umami-event-name={repo.name}
           href={repo.html_url}>GitHub</a
         >
         {
@@ -88,6 +90,8 @@ function writeNumberNicely(num: number) {
                 "px-2 py-0.5 font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
                 theme[0],
               ]}
+              data-umami-event="Visit Sponsor"
+              data-umami-event-name={repo.name}
               target="_blank"
               href={sponsorLink}
             >
