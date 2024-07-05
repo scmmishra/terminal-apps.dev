@@ -22,6 +22,7 @@ const themeConfig = {
   purple: ["bg-purple-500", "text-purple-500"],
   indigo: ["bg-indigo-500", "text-indigo-500"],
   fuchsia: ["bg-fuchsia-500", "text-fuchsia-500"],
+  teal: ["bg-teal-300", "text-teal-300"],
 };
 
 const starsCount = writeNumberNicely(repo.stargazers_count);
@@ -55,7 +56,7 @@ function writeNumberNicely(num: number) {
   </a>
   <div>
     <div class="flex gap-2 items-center justify-between">
-      <h2 class:list={["text-xl font-semibold text-pink-400", theme[1]]}>
+      <h2 class:list={["text-xl font-semibold ", theme[1]]}>
         {repo.name} [{starsCount} Stars]
       </h2>
       <div>
@@ -64,14 +65,20 @@ function writeNumberNicely(num: number) {
           target="_blank"
           href={repo.html_url}>GitHub</a
         >
-        <a
-          class:list={[
-            "px-2 py-0.5 font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
-            theme[0],
-          ]}
-          target="_blank"
-          href={sponsorLink}>Sponsor</a
-        >
+        {
+          sponsorLink && (
+            <a
+              class:list={[
+                "px-2 py-0.5 font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
+                theme[0],
+              ]}
+              target="_blank"
+              href={sponsorLink}
+            >
+              Sponsor
+            </a>
+          )
+        }
       </div>
     </div>
     <p class="mt-2">{repo.description}</p>

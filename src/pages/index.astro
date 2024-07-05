@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
 import Lazygit from "../assets/screenshots/lazygit.png";
 import Btop from "../assets/screenshots/btop.png";
 import Harlequin from "../assets/screenshots/harlequin.png";
 import Posting from "../assets/screenshots/posting.png";
 import Lazydocker from "../assets/screenshots/lazydocker.png";
+import Softserve from "../assets/screenshots/soft-serve.png";
+import Oha from "../assets/screenshots/oha.png";
 import Superfile from "../assets/screenshots/superfile.png";
 import GhDash from "../assets/screenshots/gh-dash.png";
 
@@ -35,6 +38,17 @@ const projects = [
     sponsorLink: "https://ko-fi.com/yorukot",
   },
   {
+    image: Softserve,
+    color: "fuchsia",
+    repoName: "charmbracelet/soft-serve",
+  },
+  {
+    image: Oha,
+    color: "yellow",
+    repoName: "hatoo/oha",
+    sponsorLink: "https://github.com/sponsors/hatoo",
+  },
+  {
     image: Lazydocker,
     color: "blue",
     repoName: "jesseduffield/lazydocker",
@@ -48,7 +62,7 @@ const projects = [
   },
   {
     image: Harlequin,
-    color: "yellow",
+    color: "teal",
     repoName: "tconbeer/harlequin",
     sponsorLink: "https://github.com/sponsors/tconbeer",
   },
