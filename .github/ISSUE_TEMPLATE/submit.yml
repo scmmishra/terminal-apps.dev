@@ -1,6 +1,6 @@
 name: Suggest an app
 description: Suggest a TUI we should add to the list
-labels: "suggestion"
+labels: ["suggestion"]
 body:
   - type: input
     attributes:
