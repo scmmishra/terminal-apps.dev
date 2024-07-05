@@ -55,7 +55,9 @@ function writeNumberNicely(num: number) {
     />
   </a>
   <div>
-    <div class="flex gap-2 items-center justify-between">
+    <div
+      class="flex md:flex-row flex-col gap-2 md:items-center md:justify-between"
+    >
       <h2 class:list={["text-xl font-semibold ", theme[1]]}>
         {repo.name} [{starsCount} Stars]
       </h2>

@@ -79,14 +79,15 @@ const projects = [
     </p>
   </section>
 
-  <main class="grid grid-cols-2 gap-12 max-w-7xl mx-auto pb-12">
+  <main class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto pb-12">
     {projects.map((proj) => <Card {...proj} />)}
   </main>
 
   <footer class="max-w-7xl mx-auto py-10 border-t border-gray-900">
     Curated and maintained by <a
+      target="_blank"
       href="https://shivam.dev"
-      class="hover:underline">@scmmishra</a
+      class="underline">@scmmishra</a
     >
   </footer>
 </Layout>
