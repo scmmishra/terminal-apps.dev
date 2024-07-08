@@ -15,7 +15,8 @@ interface Props {
     | "purple"
     | "indigo"
     | "fuchsia"
-    | "teal";
+    | "teal"
+    | "lime";
 }
 
 const { repoName, image, sponsorLink, color } = Astro.props;
@@ -36,6 +37,7 @@ const themeConfig = {
   indigo: ["bg-indigo-500", "text-indigo-500"],
   fuchsia: ["bg-fuchsia-500", "text-fuchsia-500"],
   teal: ["bg-teal-300", "text-teal-300"],
+  lime: ["bg-lime-500", "text-lime-500"],
 };
 
 const starsCount = writeNumberNicely(repo.stargazers_count);
