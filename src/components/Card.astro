@@ -2,26 +2,12 @@
 import { Image } from "astro:assets";
 import { getRepo } from "../utils/github";
 
-interface Props {
-  image: ImageMetadata;
-  sponsorLink?: string;
-  repoName: string;
-  color:
-    | "pink"
-    | "red"
-    | "green"
-    | "blue"
-    | "yellow"
-    | "purple"
-    | "indigo"
-    | "fuchsia"
-    | "teal"
-    | "lime";
-}
+interface Props extends Project {}
 
-const { repoName, image, sponsorLink, color } = Astro.props;
+const { title, description, repoName, image, sponsorLink, color, website } =
+  Astro.props;
 
-const repo = await getRepo(repoName);
+const repo = repoName ? await getRepo(repoName) : {};
 
 if (!repo) {
   throw new Error(`Repo ${repoName} not found`);
@@ -38,6 +24,7 @@ const themeConfig = {
   fuchsia: ["bg-fuchsia-500", "text-fuchsia-500"],
   teal: ["bg-teal-300", "text-teal-300"],
   lime: ["bg-lime-500", "text-lime-500"],
+  orange: ["bg-orange-500", "text-orange-500"],
 };
 
 const starsCount = writeNumberNicely(repo.stargazers_count);
@@ -54,10 +41,10 @@ function writeNumberNicely(num: number) {
 
 <section class="space-y-4 block">
   <a
-    href={repo.html_url}
+    href={repo.html_url ?? website}
     target="_blank"
     data-umami-event="Visit Project"
-    data-umami-event-name={repo.name}
+    data-umami-event-name={repo.name ?? title}
     class:list={[
       "block max-w-3xl mx-auto p-1 md:p-2 rounded md:rounded-lg overflow-hidden",
       theme[0],
@@ -66,7 +53,7 @@ function writeNumberNicely(num: number) {
     <Image
       src={image}
       densities={[1.5, 2]}
-      alt={`Screenshot of terminal app called ${repo.name}`}
+      alt={`Screenshot of terminal app called ${repo.name ?? title}`}
       class="shadow"
     />
   </a>
@@ -75,21 +62,41 @@ function writeNumberNicely(num: number) {
       class="flex md:flex-row flex-col gap-2 md:items-center md:justify-between"
     >
       <h2 class:list={["text-xl font-semibold ", theme[1]]}>
-        {repo.name} [{starsCount} Stars]
+        {repo.name ?? title}
+        {repoName && `[${starsCount} Stars]`}
       </h2>
       <div>
-        <a
-          class="px-2 py-0.5 bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
-          target="_blank"
-          data-umami-event="Visit Project"
-          data-umami-event-name={repo.name}
-          href={repo.html_url}>GitHub</a
-        >
+        {
+          website && (
+            <a
+              class="bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
+              target="_blank"
+              data-umami-event="Visit Website"
+              data-umami-event-name={title}
+              href={website}
+            >
+              Website
+            </a>
+          )
+        }
+        {
+          repo.html_url && (
+            <a
+              class="bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
+              target="_blank"
+              data-umami-event="Visit Project"
+              data-umami-event-name={repo.name}
+              href={repo.html_url}
+            >
+              GitHub
+            </a>
+          )
+        }
         {
           sponsorLink && (
             <a
               class:list={[
-                "px-2 py-0.5 font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
+                "font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
                 theme[0],
               ]}
               data-umami-event="Visit Sponsor"
@@ -103,6 +110,6 @@ function writeNumberNicely(num: number) {
         }
       </div>
     </div>
-    <p class="mt-2">{repo.description}</p>
+    <p class="mt-2">{repo.description ?? description}</p>
   </div>
 </section>

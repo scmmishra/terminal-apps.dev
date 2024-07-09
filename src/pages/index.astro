@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
+import type { Project } from "../project.d.ts";
+
 import Lazygit from "../assets/screenshots/lazygit.png";
 import Btop from "../assets/screenshots/btop.png";
 import Harlequin from "../assets/screenshots/harlequin.png";
@@ -12,23 +14,9 @@ import Oha from "../assets/screenshots/oha.png";
 import Superfile from "../assets/screenshots/superfile.png";
 import GhDash from "../assets/screenshots/gh-dash.png";
 import Cloudlens from "../assets/screenshots/cloudlens.png";
+import TerminalShop from "../assets/screenshots/terminal-shop.png";
 
-const projects: Array<{
-  image: ImageMetadata;
-  sponsorLink?: string;
-  repoName: string;
-  color:
-    | "pink"
-    | "red"
-    | "green"
-    | "blue"
-    | "yellow"
-    | "purple"
-    | "indigo"
-    | "fuchsia"
-    | "teal"
-    | "lime";
-}> = [
+const projects: Array<Project> = [
   {
     image: Lazygit,
     color: "pink",
@@ -86,6 +74,14 @@ const projects: Array<{
     image: Cloudlens,
     color: "lime",
     repoName: "one2nc/cloudlens",
+  },
+  {
+    image: TerminalShop,
+    title: "Terminal Shop",
+    description:
+      "delicious coffee, ethically sourced you can order from your terminal",
+    color: "orange",
+    website: "https://terminal.shop/",
   },
 ];
 ---
