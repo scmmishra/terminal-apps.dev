@@ -1,16 +1,45 @@
 ---
 import { Image } from "astro:assets";
 import { getRepo } from "../utils/github";
+import { writeNumberNicely } from "../utils/format";
 
-interface Props extends Project {}
+interface Props {
+  image: ImageMetadata;
+  website?: string;
+  title?: string;
+  repoName?: string;
+  sponsorLink?: string;
+  description?: string;
+  color:
+    | "pink"
+    | "red"
+    | "green"
+    | "blue"
+    | "yellow"
+    | "purple"
+    | "indigo"
+    | "fuchsia"
+    | "teal"
+    | "lime"
+    | "orange";
+}
 
 const { title, description, repoName, image, sponsorLink, color, website } =
   Astro.props;
 
-const repo = repoName ? await getRepo(repoName) : {};
+type Repository = {
+  stargazers_count: number;
+  html_url: string;
+  name: string;
+  description: string;
+};
 
-if (!repo) {
-  throw new Error(`Repo ${repoName} not found`);
+let repo: Repository | null = null;
+let starsCount: string | null = null;
+
+if (repoName) {
+  repo = (await getRepo(repoName)) as Repository;
+  starsCount = writeNumberNicely(repo.stargazers_count);
 }
 
 const themeConfig = {
@@ -27,24 +56,15 @@ const themeConfig = {
   orange: ["bg-orange-500", "text-orange-500"],
 };
 
-const starsCount = writeNumberNicely(repo.stargazers_count);
 const theme = themeConfig[color];
-
-function writeNumberNicely(num: number) {
-  return new Intl.NumberFormat("en-US", {
-    notation: "compact",
-    compactDisplay: "short",
-    maximumFractionDigits: 1,
-  }).format(num);
-}
 ---
 
 <section class="space-y-4 block">
   <a
-    href={repo.html_url ?? website}
+    href={repo?.html_url ?? website}
     target="_blank"
     data-umami-event="Visit Project"
-    data-umami-event-name={repo.name ?? title}
+    data-umami-event-name={repo?.name ?? title}
     class:list={[
       "block max-w-3xl mx-auto p-1 md:p-2 rounded md:rounded-lg overflow-hidden",
       theme[0],
@@ -53,7 +73,7 @@ function writeNumberNicely(num: number) {
     <Image
       src={image}
       densities={[1.5, 2]}
-      alt={`Screenshot of terminal app called ${repo.name ?? title}`}
+      alt={`Screenshot of terminal app called ${repo?.name ?? title}`}
       class="shadow"
     />
   </a>
@@ -62,7 +82,7 @@ function writeNumberNicely(num: number) {
       class="flex md:flex-row flex-col gap-2 md:items-center md:justify-between"
     >
       <h2 class:list={["text-xl font-semibold ", theme[1]]}>
-        {repo.name ?? title}
+        {repo?.name ?? title}
         {repoName && `[${starsCount} Stars]`}
       </h2>
       <div>
@@ -80,13 +100,13 @@ function writeNumberNicely(num: number) {
           )
         }
         {
-          repo.html_url && (
+          repo?.html_url && (
             <a
               class="bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
               target="_blank"
               data-umami-event="Visit Project"
-              data-umami-event-name={repo.name}
-              href={repo.html_url}
+              data-umami-event-name={repo?.name}
+              href={repo?.html_url}
             >
               GitHub
             </a>
@@ -100,7 +120,7 @@ function writeNumberNicely(num: number) {
                 theme[0],
               ]}
               data-umami-event="Visit Sponsor"
-              data-umami-event-name={repo.name}
+              data-umami-event-name={repo?.name}
               target="_blank"
               href={sponsorLink}
             >
@@ -110,6 +130,6 @@ function writeNumberNicely(num: number) {
         }
       </div>
     </div>
-    <p class="mt-2">{repo.description ?? description}</p>
+    <p class="mt-2">{repo?.description ?? description}</p>
   </div>
 </section>

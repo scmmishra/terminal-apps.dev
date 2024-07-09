@@ -1,8 +1,8 @@
 ---
+import type { ComponentProps } from "astro/types";
+
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-
-import type { Project } from "../project.d.ts";
 
 import Lazygit from "../assets/screenshots/lazygit.png";
 import Btop from "../assets/screenshots/btop.png";
@@ -16,7 +16,9 @@ import GhDash from "../assets/screenshots/gh-dash.png";
 import Cloudlens from "../assets/screenshots/cloudlens.png";
 import TerminalShop from "../assets/screenshots/terminal-shop.png";
 
-const projects: Array<Project> = [
+type CardProps = ComponentProps<typeof Card>;
+
+const projects: Array<CardProps> = [
   {
     image: Lazygit,
     color: "pink",
