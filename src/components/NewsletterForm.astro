@@ -1,0 +1,83 @@
+<section class="bg-slate-700 p-2 max-w-xl text-white">
+  <div class="p-4 bg-black">
+    <h1 class="text-2xl font-bold">📫&nbsp;Get updates!</h1>
+    <p
+      class="text-zinc-700 leading-relaxed tracking-normal dark:text-zinc-400 text-balance mt-2 text-sm"
+    >
+      I'll send an email only when I add a couple of new terminals, which is
+      usually once month at best.
+    </p>
+    <p
+      class="text-zinc-700 leading-relaxed font-medium tracking-normal dark:text-zinc-400 text-balance mt-2 text-sm"
+    >
+      The email list stays private and is never shared with or sold to anyone.
+      No spam, unsubscribe at any time. Scout's honor.
+    </p>
+    <form
+      action="https://picoletter.com/terminal-apps/embed/subscribe"
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://picoletter.com/terminal-apps', popupwindow)"
+      class="picoletter-form-embed flex flex-col mt-5 text-sm"
+    >
+      <label
+        for="pico-name"
+        class="font-medium uppercase tracking-widest text-zinc-600 text-[10px] mb-1"
+        >Enter your name</label
+      >
+      <input
+        type="text"
+        name="name"
+        class="focus:outline-none focus:ring-2 bg-slate-800 focus:ring-slate-700 focus:border-transparent"
+        placeholder="Your preferred name"
+        id="pico-name"
+      />
+
+      <label
+        for="pico-email"
+        class="font-medium uppercase tracking-widest text-zinc-600 text-[10px] mb-1"
+        >Enter your email</label
+      >
+      <input
+        type="email"
+        name="email"
+        class="focus:outline-none focus:ring-2 bg-slate-800 focus:ring-slate-700 focus:border-transparent"
+        placeholder="shivam@example.com"
+        id="pico-email"
+      />
+
+      <input
+        type="submit"
+        class="text-base focus:outline-none focus:ring-2 focus:ring-yellow-800 focus:border-transparent shadow-sm bg-yellow-400 font-medium py-1.5 px-3 text-black hover:bg-yellow-500 cursor-pointer my-2"
+        value="Subscribe now!"
+      />
+      <p>
+        <a href="https://git.new/picoletter" target="_blank" class="underline">
+          Built using PicoLetter.
+        </a>
+      </p>
+    </form>
+  </div>
+</section>
+
+<style scoped>
+  :root {
+    --accent: #09090b;
+    --accent-light: color-mix(in srgb, var(--accent), white 30%);
+    --accent-lightest: color-mix(in srgb, var(--accent), white 90%);
+    --accent-dark: color-mix(in srgb, var(--accent), black 30%);
+  }
+
+  .picoletter-form-embed input[type="text"],
+  .picoletter-form-embed input[type="email"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .picoletter-form-embed p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-size: 0.75rem;
+    color: #666;
+  }
+</style>
