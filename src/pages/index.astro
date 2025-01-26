@@ -15,6 +15,7 @@ import Superfile from "../assets/screenshots/superfile.png";
 import GhDash from "../assets/screenshots/gh-dash.png";
 import Cloudlens from "../assets/screenshots/cloudlens.png";
 import GitKraken from "../assets/screenshots/git-kraken.png";
+import Trippy from "../assets/screenshots/trippy.png";
 import NewsletterForm from "../components/NewsletterForm.astro";
 
 type CardProps = ComponentProps<typeof Card>;
@@ -94,6 +95,13 @@ const projects: Array<CardProps> = [
     tags: ["git"],
     website: "https://www.gitkraken.com/",
     repoName: "gitkraken/gk-cli",
+  },
+  {
+    image: Trippy,
+    color: "yellow",
+    tags: ["monitoring"],
+    website: "https://trippy.rs/",
+    repoName: "fujiapple852/trippy",
   },
 ];
 ---
