@@ -8,6 +8,7 @@ interface Props {
   website?: string;
   title?: string;
   repoName?: string;
+  tags: string[];
   sponsorLink?: string;
   description?: string;
   color:
@@ -24,8 +25,16 @@ interface Props {
     | "orange";
 }
 
-const { title, description, repoName, image, sponsorLink, color, website } =
-  Astro.props;
+const {
+  title,
+  description,
+  repoName,
+  image,
+  sponsorLink,
+  color,
+  website,
+  tags,
+} = Astro.props;
 
 type Repository = {
   stargazers_count: number;
