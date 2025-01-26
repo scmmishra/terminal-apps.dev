@@ -14,7 +14,9 @@ import Oha from "../assets/screenshots/oha.png";
 import Superfile from "../assets/screenshots/superfile.png";
 import GhDash from "../assets/screenshots/gh-dash.png";
 import Cloudlens from "../assets/screenshots/cloudlens.png";
-import TerminalShop from "../assets/screenshots/terminal-shop.png";
+import GitKraken from "../assets/screenshots/git-kraken.png";
+import Trippy from "../assets/screenshots/trippy.png";
+import Yazi from "../assets/screenshots/yazi.png";
 import NewsletterForm from "../components/NewsletterForm.astro";
 
 type CardProps = ComponentProps<typeof Card>;
@@ -23,68 +25,91 @@ const projects: Array<CardProps> = [
   {
     image: Lazygit,
     color: "pink",
+    tags: ["git"],
     repoName: "jesseduffield/lazygit",
     sponsorLink: "https://github.com/sponsors/jesseduffield",
   },
   {
     image: Btop,
     color: "red",
+    tags: ["monitoring"],
     repoName: "aristocratos/btop",
     sponsorLink: "https://github.com/sponsors/aristocratos",
   },
   {
     image: GhDash,
     color: "green",
+    tags: ["git"],
     repoName: "dlvhdr/gh-dash",
     sponsorLink: "https://github.com/sponsors/dlvhdr",
   },
   {
     image: Superfile,
     color: "indigo",
+    tags: ["productivity", "file-management"],
     repoName: "yorukot/superfile",
     sponsorLink: "https://ko-fi.com/yorukot",
   },
   {
     image: Softserve,
     color: "fuchsia",
+    tags: ["git", "infra"],
     repoName: "charmbracelet/soft-serve",
   },
   {
     image: Oha,
     color: "yellow",
+    tags: ["infra"],
     repoName: "hatoo/oha",
     sponsorLink: "https://github.com/sponsors/hatoo",
   },
   {
     image: Lazydocker,
     color: "blue",
+    tags: ["infra"],
     repoName: "jesseduffield/lazydocker",
     sponsorLink: "https://github.com/sponsors/jesseduffield",
   },
   {
     image: Posting,
     color: "purple",
+    tags: ["productivity"],
     repoName: "darrenburns/posting",
     sponsorLink: "https://github.com/sponsors/darrenburns",
   },
   {
     image: Harlequin,
     color: "teal",
+    tags: ["infra", "productivity"],
     repoName: "tconbeer/harlequin",
     sponsorLink: "https://github.com/sponsors/tconbeer",
   },
   {
     image: Cloudlens,
     color: "lime",
+    tags: ["infra"],
     repoName: "one2nc/cloudlens",
   },
   {
-    image: TerminalShop,
-    title: "Terminal Shop",
-    description:
-      "delicious, ethically sourced coffee you can order from your terminal",
+    image: GitKraken,
     color: "orange",
-    website: "https://terminal.shop/",
+    tags: ["git"],
+    website: "https://www.gitkraken.com/",
+    repoName: "gitkraken/gk-cli",
+  },
+  {
+    image: Trippy,
+    color: "yellow",
+    tags: ["monitoring"],
+    website: "https://trippy.rs/",
+    repoName: "fujiapple852/trippy",
+  },
+  {
+    image: Yazi,
+    color: "blue",
+    tags: ["file-management"],
+    website: "https://yazi-rs.github.io",
+    repoName: "sxyazi/yazi",
   },
 ];
 ---
