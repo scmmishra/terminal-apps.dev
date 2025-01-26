@@ -154,8 +154,12 @@ const theme = themeConfig[color];
         {repo?.description ?? description}
       </div>
       <div class="col-span-1 sm:text-right text-sm text-gray-400">
-        {repo?.license.spdx_id && <p>{repo.license.spdx_id}</p>}
         {repo?.language && <p>Built with {repo.language}</p>}
+        {
+          repo?.license.spdx_id && repo?.license.spdx_id !== "NOASSERTION" && (
+            <p>{repo.license.name}</p>
+          )
+        }
       </div>
     </div>
   </div>
