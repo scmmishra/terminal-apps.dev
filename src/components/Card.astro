@@ -42,6 +42,10 @@ type Repository = {
   name: string;
   description: string;
   language: string;
+  license: {
+    spdx_id: string;
+    name: string;
+  };
 };
 
 let repo: Repository | null = null;
@@ -145,11 +149,12 @@ const theme = themeConfig[color];
         }
       </div>
     </div>
-    <div class="mt-2 grid grid-cols-1 sm:grid-cols-3">
+    <div class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-1">
       <div class="col-span-2">
         {repo?.description ?? description}
       </div>
-      <div class="col-span-1 text-right text-sm text-gray-400">
+      <div class="col-span-1 sm:text-right text-sm text-gray-400">
+        {repo?.license.spdx_id && <p>{repo.license.spdx_id}</p>}
         {repo?.language && <p>Built with {repo.language}</p>}
       </div>
     </div>
