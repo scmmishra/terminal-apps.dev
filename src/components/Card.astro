@@ -32,6 +32,7 @@ type Repository = {
   html_url: string;
   name: string;
   description: string;
+  language: string;
 };
 
 let repo: Repository | null = null;
@@ -81,9 +82,14 @@ const theme = themeConfig[color];
     <div
       class="flex md:flex-row flex-col gap-2 md:items-center md:justify-between"
     >
-      <h2 class:list={["text-xl font-semibold ", theme[1]]}>
-        {repo?.name ?? title}
-        {repoName && `[${starsCount} Stars]`}
+      <h2
+        class:list={[
+          "flex gap-2 items-center text-xl font-semibold ",
+          theme[1],
+        ]}
+      >
+        <span>{repo?.name ?? title}</span>
+        <span>{repoName && `[${starsCount} Stars]`}</span>
       </h2>
       <div>
         {
@@ -130,6 +136,13 @@ const theme = themeConfig[color];
         }
       </div>
     </div>
-    <p class="mt-2">{repo?.description ?? description}</p>
+    <div class="mt-2 grid grid-cols-1 sm:grid-cols-3">
+      <div class="col-span-2">
+        {repo?.description ?? description}
+      </div>
+      <div class="col-span-1 text-right text-sm text-gray-400">
+        {repo?.language && <p>Built with {repo.language}</p>}
+      </div>
+    </div>
   </div>
 </section>
