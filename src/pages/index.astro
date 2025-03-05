@@ -138,6 +138,8 @@ const projects: Array<CardProps> = [
     <div>
       <button
         id="openDialog"
+        data-s:event="Open Subscribe Modal"
+        data-s:event-props="from=header"
         class="font-bold text-black leading-none cursor-pointer hover:underline bg-pink-400 px-5 py-2 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
       >
         Get Updates
@@ -166,6 +168,8 @@ const projects: Array<CardProps> = [
     <span class="flex flex-wrap gap-2">
       <button
         id="openDialogFooter"
+        data-s:event="Open Subscribe Modal"
+        data-s:event-props="from=footer"
         class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
       >
         Get updates
@@ -174,6 +178,7 @@ const projects: Array<CardProps> = [
         target="_blank"
         class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
         href="https://github.com/scmmishra/terminal-apps.dev"
+        data-s:event="Visit GitHub Repo"
       >
         GitHub
       </a>
@@ -181,6 +186,7 @@ const projects: Array<CardProps> = [
         target="_blank"
         class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
         href="https://github.com/scmmishra/terminal-apps.dev/issues/new?assignees=&labels=suggestion&projects=&template=submit.yml"
+        data-s:event="Suggest an app"
       >
         Suggest an app
       </a>
