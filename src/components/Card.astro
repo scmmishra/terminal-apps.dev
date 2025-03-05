@@ -77,8 +77,8 @@ const theme = themeConfig[color];
   <a
     href={repo?.html_url ?? website}
     target="_blank"
-    data-umami-event="Visit Project"
-    data-umami-event-name={repo?.name ?? title}
+    data-s:event="Visit Project"
+    data-s:event-props={`project=${repo?.name ?? title}`}
     class:list={[
       "block max-w-3xl mx-auto p-1 md:p-2 rounded md:rounded-lg overflow-hidden",
       theme[0],
@@ -110,8 +110,8 @@ const theme = themeConfig[color];
             <a
               class="bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
               target="_blank"
-              data-umami-event="Visit Website"
-              data-umami-event-name={title}
+              data-s:event="Visit Website"
+              data-s:event-props={`project=${repo?.name ?? title}`}
               href={website}
             >
               Website
@@ -123,8 +123,8 @@ const theme = themeConfig[color];
             <a
               class="bg-white font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']"
               target="_blank"
-              data-umami-event="Visit Project"
-              data-umami-event-name={repo?.name}
+              data-s:event="Visit Project"
+              data-s:event-props={`project=${repo?.name ?? title}`}
               href={repo?.html_url}
             >
               GitHub
@@ -138,8 +138,8 @@ const theme = themeConfig[color];
                 "font-bold text-black leading-none text-sm cursor-pointer hover:underline before:content-['[_'] after:content-['_]']",
                 theme[0],
               ]}
-              data-umami-event="Visit Sponsor"
-              data-umami-event-name={repo?.name}
+              data-s:event="Visit Sponsor"
+              data-s:event-props={`project=${repo?.name ?? title}`}
               target="_blank"
               href={sponsorLink}
             >
