@@ -18,6 +18,7 @@ import GitKraken from "../assets/screenshots/git-kraken.png";
 import Trippy from "../assets/screenshots/trippy.png";
 import Bagels from "../assets/screenshots/bagels.png";
 import Yazi from "../assets/screenshots/yazi.png";
+import Gloomberb from "../assets/screenshots/gloomberb.png";
 import NewsletterForm from "../components/NewsletterForm.astro";
 
 type CardProps = ComponentProps<typeof Card>;
@@ -117,6 +118,13 @@ const projects: Array<CardProps> = [
     color: "purple",
     tags: ["finance"],
     repoName: "EnhancedJax/Bagels",
+  },
+  {
+    image: Gloomberb,
+    color: "lime",
+    tags: ["finance"],
+    website: "https://gloom.sh",
+    repoName: "vincelwt/gloomberb",
   },
 ];
 ---
