@@ -18,7 +18,6 @@ import GitKraken from "../assets/screenshots/git-kraken.png";
 import Trippy from "../assets/screenshots/trippy.png";
 import Bagels from "../assets/screenshots/bagels.png";
 import Yazi from "../assets/screenshots/yazi.png";
-import NewsletterForm from "../components/NewsletterForm.astro";
 
 type CardProps = ComponentProps<typeof Card>;
 
@@ -135,25 +134,11 @@ const projects: Array<CardProps> = [
         A collection of awesome TUI apps from around the web.
       </p>
     </div>
-    <div>
-      <button
-        id="openDialog"
-        data-s:event="Open Subscribe Modal"
-        data-s:event-props="from=header"
-        class="font-bold text-black leading-none cursor-pointer hover:underline bg-pink-400 px-5 py-2 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-      >
-        Get Updates
-      </button>
-    </div>
   </section>
 
   <main class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto pb-12">
     {projects.map((proj) => <Card {...proj} />)}
   </main>
-
-  <dialog id="newsletterDialog">
-    <NewsletterForm />
-  </dialog>
 
   <footer
     class="max-w-7xl mx-auto py-10 border-t border-gray-900 flex md:flex-row flex-col md:justify-between md:items-center gap-2"
@@ -166,14 +151,6 @@ const projects: Array<CardProps> = [
       >
     </span>
     <span class="flex flex-wrap gap-2">
-      <button
-        id="openDialogFooter"
-        data-s:event="Open Subscribe Modal"
-        data-s:event-props="from=footer"
-        class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
-      >
-        Get updates
-      </button>
       <a
         target="_blank"
         class="before:content-['[_'] after:content-['_]'] hover:bg-white hover:text-black"
@@ -191,35 +168,5 @@ const projects: Array<CardProps> = [
         Suggest an app
       </a>
     </span>
-  </footer></Layout
->
-
-<script>
-  const dialog = document.getElementById(
-    "newsletterDialog",
-  ) as HTMLDialogElement;
-  const openButton = document.getElementById("openDialog");
-  const openButtonFooter = document.getElementById("openDialogFooter");
-  // const closeButton = document.getElementById("closeDialog");
-
-  openButton?.addEventListener("click", () => {
-    dialog?.showModal();
-  });
-
-  openButtonFooter?.addEventListener("click", () => {
-    dialog?.showModal();
-  });
-
-  // Close the dialog when clicking outside of it
-  dialog?.addEventListener("click", (event) => {
-    const rect = dialog.getBoundingClientRect();
-    if (
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom ||
-      event.clientX < rect.left ||
-      event.clientX > rect.right
-    ) {
-      dialog.close();
-    }
-  });
-</script>
+  </footer>
+</Layout>
